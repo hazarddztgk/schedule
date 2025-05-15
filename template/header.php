@@ -45,26 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
     </style>
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition skin-blue sidebar-mini" style="margin: 0">
 <div class="wrapper">
 
@@ -102,7 +83,12 @@ desired effect
                             <!-- The user image in the navbar-->
 
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Здравствуйте, Джон Смит Тимофеевич</span>
+                            <span class="hidden-xs">Здравствуйте, <?
+                                session_start();
+                                $fio = $_SESSION['fio'];
+                                $role = $_SESSION['roleName'];
+                                echo  $fio;
+                               ?></span>
                         </a>
                         <ul class="dropdown-menu list-unstyled" style="margin-top: 15px; width: 294px">
                             <!-- The user image in the menu -->
@@ -110,7 +96,7 @@ desired effect
 
 
                                 <p>
-                                    Джон Смит Тимофеевич - Администратор
+                                    <?  echo  $fio; ?> - <? echo $role; ?>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -118,7 +104,10 @@ desired effect
                             <!-- Menu Footer-->
                             <div class="user-footer d-flex justify-content-between p-3" style="display: flex; justify-content: space-between">
                                 <a href="#" class="btn btn-default btn-flat" style="padding: 6px 12px; display: inline-block; text-decoration: none">Профиль</a>
-                                <a href="#" class="btn btn-default btn-flat" style="padding: 6px 12px; display: inline-block; text-decoration: none">Выход</a>
+                                <form method="POST" action="../secure.php">
+                                    <button type="submit" class="btn btn-default btnflat" name="out" style="padding: 6px 12px; height: 100%">Выход</button>
+                                </form>
+
                             </div>
 
 
