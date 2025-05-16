@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 15 2025 г., 20:13
+-- Время создания: Май 16 2025 г., 00:19
 -- Версия сервера: 5.6.51-log
 -- Версия PHP: 7.2.34
 
@@ -247,10 +247,10 @@ CREATE TABLE `teacher` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `userr`
+-- Структура таблицы `user`
 --
 
-CREATE TABLE `userr` (
+CREATE TABLE `user` (
   `user_id` bigint(20) NOT NULL,
   `lastname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `firstname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -262,6 +262,13 @@ CREATE TABLE `userr` (
   `role_id` tinyint(4) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`user_id`, `lastname`, `firstname`, `patronymic`, `login`, `pass`, `gender_id`, `birthday`, `role_id`, `active`) VALUES
+(1, 'Смит', 'Джон', 'Тимофеевич', 'admin', '$2y$10$mFlJsQgNvDQ27XfADrMh8O9OQA47f2gLmqYdwGeg8SpsvdoRUX95S', 1, '2000-07-10', 1, 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -358,9 +365,9 @@ ALTER TABLE `teacher`
   ADD KEY `otdel_id` (`otdel_id`);
 
 --
--- Индексы таблицы `userr`
+-- Индексы таблицы `user`
 --
-ALTER TABLE `userr`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `gender_id` (`gender_id`),
   ADD KEY `role_id` (`role_id`);
@@ -436,10 +443,10 @@ ALTER TABLE `subject`
   MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблицы `userr`
+-- AUTO_INCREMENT для таблицы `user`
 --
-ALTER TABLE `userr`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user`
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -478,7 +485,7 @@ ALTER TABLE `special`
 -- Ограничения внешнего ключа таблицы `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `userr` (`user_id`),
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`gruppa_id`) REFERENCES `gruppa` (`gruppa_id`);
 
 --
@@ -495,11 +502,11 @@ ALTER TABLE `teacher`
   ADD CONSTRAINT `teacher_ibfk_2` FOREIGN KEY (`otdel_id`) REFERENCES `otdel` (`otdel_id`);
 
 --
--- Ограничения внешнего ключа таблицы `userr`
+-- Ограничения внешнего ключа таблицы `user`
 --
-ALTER TABLE `userr`
-  ADD CONSTRAINT `userr_ibfk_1` FOREIGN KEY (`gender_id`) REFERENCES `gender` (`gender_id`),
-  ADD CONSTRAINT `userr_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`);
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`gender_id`) REFERENCES `gender` (`gender_id`),
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

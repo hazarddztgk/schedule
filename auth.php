@@ -12,7 +12,7 @@ if (isset($_SESSION['role'])) {
 if (isset($_POST['login']) && isset($_POST['password'])) {
     $login = Helper::clearString($_POST['login']);
     $password = Helper::clearString($_POST['password']);
-    $userMap = new UserrMap();
+    $userMap = new UserMap();
     $user = $userMap->auth($login, $password);
     if ($user) {
         $_SESSION['id'] = $user->user_id;

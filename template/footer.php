@@ -1,6 +1,9 @@
 
 
-
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 <!-- Main Footer -->
 <footer class="main-footer">
     <!-- To the right -->

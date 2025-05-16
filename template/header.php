@@ -12,6 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../template/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../template/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../template/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -22,6 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="../template/css/skins/skin-blue.min.css">
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -77,61 +79,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Tasks Menu -->
 
                     <!-- User Account Menu -->
-                    <li class="dropdown user user-menu list-unstyled open">
+                    <li class="dropdown user user-menu list-unstyled">
                         <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-decoration: none; padding: 10px">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-decoration: none; ">
                             <!-- The user image in the navbar-->
 
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">Здравствуйте, <?
                                 session_start();
                                 $fio = $_SESSION['fio'];
-                                $role = $_SESSION['roleName'];
+                                $roleName = $_SESSION['roleName'];
                                 echo  $fio;
                                ?></span>
                         </a>
                         <ul class="dropdown-menu list-unstyled" style="margin-top: 15px; width: 294px">
-                            <!-- The user image in the menu -->
                             <li class="user-header">
-
-
                                 <p>
-                                    <?  echo  $fio; ?> - <? echo $role; ?>
+                                    <?  echo  $fio; ?> - <? echo $roleName; ?>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-
-                            <!-- Menu Footer-->
                             <div class="user-footer d-flex justify-content-between p-3" style="display: flex; justify-content: space-between">
                                 <a href="#" class="btn btn-default btn-flat" style="padding: 6px 12px; display: inline-block; text-decoration: none">Профиль</a>
                                 <form method="POST" action="../secure.php">
                                     <button type="submit" class="btn btn-default btnflat" name="out" style="padding: 6px 12px; height: 100%">Выход</button>
                                 </form>
-
                             </div>
-
-
-
-
                         </ul>
                     </li>
-                    <!-- Control Sidebar Toggle Button -->
-
                 </ul>
             </div>
         </nav>
     </header>
-    <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
-
-        <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-
-
             <?php require_once 'template/menu.php'; ?>
-
         </section>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -143,7 +125,3 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main content -->
         <section class="content container-fluid">
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
